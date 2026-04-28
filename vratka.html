@@ -126,7 +126,30 @@
             { id: 10, flavor: 'Rio Punch', imageUrl: 'assets/Monster_Rio_Punch_500ml_CZSK_5056784902790_copy-removebg-preview.png', mainPrice: 27.90, mainStore: 'JIP', hasFlyer: true, actionDeals: CURRENT_DEALS.filter(d => d.store === 'JIP' || d.store === 'Ratio') }
         ];
 
-        function fetchLiveDeals() {
+        async function fetchLiveDeals() {
+            try {
+                const response = await fetch('https://monster-watch-api.onrender.com/api/deals');
+                const data = await response.json();
+                
+                if (data.status === 'success' && data.deals) {
+                    const apiDeals = data.deals.map(d => ({
+                        store: d.obchod,
+                        price: parseFloat(d.cena_akcni) || parseFloat(d.cena_puvodni),
+                        isFlyer: true
+                    }));
+                    
+                    if (apiDeals.length > 0) {
+                        const bestDeal = apiDeals.reduce((min, d) => d.price < min.price ? d : min, apiDeals[0]);
+                        MOCK_PRODUCTS.forEach(p => {
+                            p.actionDeals = apiDeals;
+                            p.mainPrice = bestDeal.price;
+                            p.mainStore = bestDeal.store;
+                        });
+                    }
+                }
+            } catch (err) {
+                console.error("API Fetch Error:", err);
+            }
             render(MOCK_PRODUCTS);
         }
         function render(products) {

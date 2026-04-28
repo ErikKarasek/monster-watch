@@ -32,14 +32,40 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  const MOCK_PRODUCTS = [
+    { id: 1, flavor: 'Original', name: 'Monster Energy', imageUrl: 'https://images.alko-napoje.cz/images/3/4/0/1340/1340_monster-energy-ultra-white-500ml-p12564.jpg', prices: [] },
+    { id: 2, flavor: 'Ultra White', name: 'Monster Energy', imageUrl: 'https://images.alko-napoje.cz/images/3/4/0/1340/1340_monster-energy-ultra-white-500ml-p12564.jpg', prices: [] },
+    { id: 3, flavor: 'Mango Loco', name: 'Monster Energy', imageUrl: 'https://images.alko-napoje.cz/images/3/4/0/1340/1340_monster-energy-ultra-white-500ml-p12564.jpg', prices: [] },
+    { id: 4, flavor: 'Pipeline Punch', name: 'Monster Energy', imageUrl: 'https://images.alko-napoje.cz/images/3/4/0/1340/1340_monster-energy-ultra-white-500ml-p12564.jpg', prices: [] },
+    { id: 5, flavor: 'Nitro Super Dry', name: 'Monster Energy', imageUrl: 'https://images.alko-napoje.cz/images/3/4/0/1340/1340_monster-energy-ultra-white-500ml-p12564.jpg', prices: [] },
+    { id: 6, flavor: 'Monarch', name: 'Monster Energy', imageUrl: 'https://images.alko-napoje.cz/images/3/4/0/1340/1340_monster-energy-ultra-white-500ml-p12564.jpg', prices: [] },
+  ];
+
   const fetchProducts = async () => {
     try {
-      const response = await fetch(`${API_URL}/products`);
+      const response = await fetch('https://monster-watch-api.onrender.com/api/deals');
       const data = await response.json();
-      setProducts(data);
+      
+      let finalProducts = [...MOCK_PRODUCTS];
+
+      if (data.status === 'success' && data.deals) {
+        const apiDeals = data.deals.map(d => ({
+          price: parseFloat(d.cena_akcni) || parseFloat(d.cena_puvodni),
+          store: { name: d.obchod, type: 'retail' },
+          inFlyer: true
+        }));
+
+        finalProducts = finalProducts.map(p => ({
+          ...p,
+          prices: apiDeals
+        }));
+      }
+
+      setProducts(finalProducts);
       setLoading(false);
     } catch (error) {
       console.error('API Error:', error);
+      setProducts(MOCK_PRODUCTS);
       setLoading(false);
     }
   };
