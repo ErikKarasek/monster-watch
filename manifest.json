@@ -1,0 +1,16 @@
+{
+  "short_name": "MonsterWatch",
+  "name": "Hlídač Monster Energy",
+  "icons": [
+    {
+      "src": "/assets/Monster_Energy_500ml_5060166692599__1__copy-removebg-preview.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#050505",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#39FF14"
+}
