@@ -1,0 +1,6 @@
+services:
+  - type: static
+    name: monster-watch-app
+    env: static
+    buildCommand: ""
+    publishPath: "."
