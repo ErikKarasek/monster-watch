@@ -102,37 +102,32 @@
         function animate() { requestAnimationFrame(animate); renderer.render(scene, camera); }
         
         const CURRENT_DEALS = [
-            { store: 'Kaufland', price: 26.90, isFlyer: true },
             { store: 'Ratio', price: 26.90, isFlyer: true },
             { store: 'JIP', price: 27.90, isFlyer: true },
             { store: 'Lidl', price: 27.90, isFlyer: false },
-            { store: 'Penny', price: 29.90, isFlyer: true },
-            { store: 'Albert', price: 32.90, isFlyer: true },
-            { store: 'BILLA', price: 32.90, isFlyer: true },
-            { store: 'Globus', price: 32.90, isFlyer: true },
-            { store: 'Hruška', price: 44.90, isFlyer: true }
+            { store: 'Penny', price: 29.90, isFlyer: true }
         ];
 
         const MOCK_PRODUCTS = [
-            { id: 1, flavor: 'Original', imageUrl: 'assets/Monster_Energy_500ml_5060166692599__1__copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Kaufland', hasFlyer: true, actionDeals: CURRENT_DEALS },
+            { id: 1, flavor: 'Original', imageUrl: 'assets/Monster_Energy_500ml_5060166692599__1__copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
             { id: 2, flavor: 'Ultra White', imageUrl: 'assets/Monster_Energy_Ultra_Zero_500ml_5060896626406_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
             { id: 3, flavor: 'Mango Loco', imageUrl: 'assets/Monster_Mango_Loco_500ml_5060896626390-1_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
-            { id: 4, flavor: 'Pipeline Punch', imageUrl: 'assets/Monster_Pipeline_Punch_500ml_5060896626383_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Kaufland', hasFlyer: true, actionDeals: CURRENT_DEALS },
+            { id: 4, flavor: 'Pipeline Punch', imageUrl: 'assets/Monster_Pipeline_Punch_500ml_5060896626383_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
             { id: 5, flavor: 'Nitro Super Dry', imageUrl: 'assets/Monster_Nitro_500ml_5060896625317_copy-removebg-preview.png', mainPrice: 27.90, mainStore: 'JIP', hasFlyer: true, actionDeals: CURRENT_DEALS.filter(d => d.store === 'JIP' || d.store === 'Ratio') },
-            { id: 6, flavor: 'Monarch', imageUrl: 'assets/Monster_Juice_Monarch_500ml_5060896621234_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Kaufland', hasFlyer: true, actionDeals: CURRENT_DEALS },
-            { id: 7, flavor: 'Lando Norris', imageUrl: 'assets/Monster_Lando_Norris.png', mainPrice: 27.90, mainStore: 'JIP', hasFlyer: true, actionDeals: CURRENT_DEALS.filter(d => d.store === 'JIP' || d.store === 'Ratio' || d.store === 'Globus') },
-            { id: 8, flavor: 'Aussie Lemonade', imageUrl: 'assets/Monster_Aussie_Lemonade_500ml_CZSK_5061013943949_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Kaufland', hasFlyer: true, actionDeals: CURRENT_DEALS },
+            { id: 6, flavor: 'Monarch', imageUrl: 'assets/Monster_Juice_Monarch_500ml_5060896621234_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
+            { id: 7, flavor: 'Lando Norris', imageUrl: 'assets/Monster_Lando_Norris.png', mainPrice: 27.90, mainStore: 'JIP', hasFlyer: true, actionDeals: CURRENT_DEALS.filter(d => d.store === 'JIP' || d.store === 'Ratio') },
+            { id: 8, flavor: 'Aussie Lemonade', imageUrl: 'assets/Monster_Aussie_Lemonade_500ml_CZSK_5061013943949_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
             { id: 9, flavor: 'Lewis Hamilton', imageUrl: 'assets/Monster_Lewis_Hamilton_500ml_5060896625720_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
             { id: 10, flavor: 'Rio Punch', imageUrl: 'assets/Monster_Rio_Punch_500ml_CZSK_5056784902790_copy-removebg-preview.png', mainPrice: 27.90, mainStore: 'JIP', hasFlyer: true, actionDeals: CURRENT_DEALS.filter(d => d.store === 'JIP' || d.store === 'Ratio') },
-            { id: 11, flavor: 'Green Zero', imageUrl: 'assets/Monster_Energy_Green_Zero_500ml_5060947549852_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Kaufland', hasFlyer: true, actionDeals: CURRENT_DEALS },
+            { id: 11, flavor: 'Green Zero', imageUrl: 'assets/Monster_Energy_Green_Zero_500ml_5060947549852_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
             { id: 12, flavor: 'Khaotic', imageUrl: 'assets/Monster_Khaotic_500ml_5060947542716_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
             { id: 13, flavor: 'Rossi Zero', imageUrl: 'assets/Monster_Rossi_Zero_500ml_CZSK_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
-            { id: 14, flavor: 'The Doctor', imageUrl: 'assets/Monster_The_Doctor_500ml_5060896626321-1_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Kaufland', hasFlyer: true, actionDeals: CURRENT_DEALS },
-            { id: 15, flavor: 'Ultra Fiesta', imageUrl: 'assets/Monster_Ultra_Fiesta_500_ml_5060896626437_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Kaufland', hasFlyer: true, actionDeals: CURRENT_DEALS },
-            { id: 16, flavor: 'Ultra Paradise', imageUrl: 'assets/Monster_Ultra_Paradise_500ml_5060896626420_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Kaufland', hasFlyer: true, actionDeals: CURRENT_DEALS },
-            { id: 17, flavor: 'Peachy Keen', imageUrl: 'assets/Monster_Ultra_Peachy_Keen_500ml_CZSK_5056784900796_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Kaufland', hasFlyer: true, actionDeals: CURRENT_DEALS },
-            { id: 18, flavor: 'Ultra Rosa', imageUrl: 'assets/Monster_Ultra_Rosa_500ml_CZSK_5061013941846_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Kaufland', hasFlyer: true, actionDeals: CURRENT_DEALS },
-            { id: 19, flavor: 'Strawberry Dreams', imageUrl: 'assets/Monster_Ultra_Strawberry_500ml_CZSK_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Kaufland', hasFlyer: true, actionDeals: CURRENT_DEALS },
+            { id: 14, flavor: 'The Doctor', imageUrl: 'assets/Monster_The_Doctor_500ml_5060896626321-1_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
+            { id: 15, flavor: 'Ultra Fiesta', imageUrl: 'assets/Monster_Ultra_Fiesta_500_ml_5060896626437_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
+            { id: 16, flavor: 'Ultra Paradise', imageUrl: 'assets/Monster_Ultra_Paradise_500ml_5060896626420_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
+            { id: 17, flavor: 'Peachy Keen', imageUrl: 'assets/Monster_Ultra_Peachy_Keen_500ml_CZSK_5056784900796_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
+            { id: 18, flavor: 'Ultra Rosa', imageUrl: 'assets/Monster_Ultra_Rosa_500ml_CZSK_5061013941846_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
+            { id: 19, flavor: 'Strawberry Dreams', imageUrl: 'assets/Monster_Ultra_Strawberry_500ml_CZSK_copy-removebg-preview.png', mainPrice: 26.90, mainStore: 'Ratio', hasFlyer: true, actionDeals: CURRENT_DEALS },
             { id: 20, flavor: 'Viking Berry', imageUrl: 'assets/Monster_Viking_Berry_500ml_CZSK_copy-removebg-preview.png', mainPrice: 27.90, mainStore: 'JIP', hasFlyer: true, actionDeals: CURRENT_DEALS.filter(d => d.store === 'JIP' || d.store === 'Ratio') }
         ];
 
